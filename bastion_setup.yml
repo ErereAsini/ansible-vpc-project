@@ -47,13 +47,14 @@
           Name: Tecprofile_Bastion_Host
           Project: Tecprofile
           Owner: DevOps Team
-        security_groups:
-          - "{{ bastion_sg_out.group_id }}"
         exact_count: 1
         count_tag:
           Name: Tecprofile_Bastion_Host
           Project: Tecprofile
           Owner: DevOps Team
+        security_groups:
+          - "{{ bastion_sg_out.group_id }}"
+        vpc_subnet_id: "{{ public_subnet1_out.subnet.id }}"
       register: bastion_instance_out
 
     - debug:
