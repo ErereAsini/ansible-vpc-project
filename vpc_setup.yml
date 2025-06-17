@@ -29,8 +29,7 @@
         map_public: yes
         state: "{{ state }}"
         resource_tags:
-          Name: "{{ Tecprofile-public-subnet1 }}"
+          Name: "{{ public_subnet1_name }}"
       register: public_subnet1_out
 
-    - debug: 
-        var: public_subnet1_out
+    
