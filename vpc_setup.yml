@@ -46,7 +46,7 @@
     - name: Create Tecprofile Public Subnet 3 in Zone3
       amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
-        cidr: "{{ private_subnet3_cidr }}"
+        cidr: "{{ public_subnet3_cidr }}"
         az: "{{ zone3 }}"
         region: "{{ region }}"
         map_public: yes
