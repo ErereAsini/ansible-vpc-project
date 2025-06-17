@@ -162,5 +162,5 @@
         - private_subnet3_out.subnet.id
         - igw_out.gateway_id
         - nat_out.nat_gateway_id
-        - private_route_table_out.route_table_id
-        - public_route_table_out.route_table_id
+        - private_route_table_out.route_table.id
+        - public_route_table_out.route_table.id
