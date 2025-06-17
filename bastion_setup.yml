@@ -54,7 +54,7 @@
           Owner: DevOps Team
         security_groups:
           - "{{ bastion_sg_out.group_id }}"
-        vpc_subnet_id: "{{ public_subnet1_out.subnet.id }}"
+        vpc_subnet_id: "{{ public_subnet1id }}"
       register: bastion_instance_out
 
     - debug:
