@@ -9,9 +9,9 @@
     - name: Import VPC Variables
       include_vars: vars/output_vars
 
-    - name: Create Techprofile ec2 key
+    - name: Create Tecprofile ec2 key
       amazon.aws.ec2_key:
-        name: Techprofile_key
+        name: Tecprofile_key
         region: "{{ region }}"
       register: key_out
 
@@ -37,22 +37,22 @@
 
     - name: Launch Bastion Host Instance
       amazon.aws.ec2_instance:
-        key_name: Techprofile_key
+        key_name: Tecprofile_key
         region: "{{ region }}"
         instance_type: t2.micro
         image: "{{ bastion_ami }}"
         wait: yes
         wait_timeout: 300
         instance_tags:
-          Name: Techprofile_Bastion_Host
-          Project: Techprofile
+          Name: Tecprofile_Bastion_Host
+          Project: Tecprofile
           Owner: DevOps Team
         security_groups:
           - "{{ bastion_sg_out.group_id }}"
         exact_count: 1
         count_tag:
-          Name: Techprofile_Bastion_Host
-          Project: Techprofile
+          Name: Tecprofile_Bastion_Host
+          Project: Tecprofile
           Owner: DevOps Team
       register: bastion_instance_out
 
