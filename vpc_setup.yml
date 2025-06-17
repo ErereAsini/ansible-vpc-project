@@ -21,7 +21,6 @@
 
     - name: Create Tecprofile Public Subnet 1 in Zone1
       amazon.aws.ec2_vpc_subnet:
-        public_subnet1_name: "{{ public_subnet1_name }}"
         vpc_id: "{{ vpcout.vpc.id }}"
         cidr: "{{ public_subnet1_cidr }}"
         az: "{{ zone1 }}"
@@ -29,7 +28,7 @@
         map_public: yes
         state: "{{ state }}"
         resource_tags:
-          Name: "{{ public_subnet1_name }}"
+          Name: Tecprofile_public_subnet1
       register: public_subnet1_out
 
     
