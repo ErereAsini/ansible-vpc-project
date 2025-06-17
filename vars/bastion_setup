@@ -1,3 +1,3 @@
-bastion_ami: ami-06971c49acd687c30
+bastion_ami:    # copy required AMI from from AWS platform
 region: us-east-2
-MYIP: 
+MYIP:   # input IP address of your local machine
