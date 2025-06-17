@@ -166,32 +166,32 @@
         - public_route_table_out.route_table.id
 
     - set_fact:
-        VPC ID: {{ vpcout.vpc.id }}
-        Public Subnet 1 ID: {{ public_subnet1_out.subnet.id }}
-        Public Subnet 2 ID: {{ public_subnet2_out.subnet.id }}
-        Public Subnet 3 ID: {{ public_subnet3_out.subnet.id }}
-        Private Subnet 1 ID: {{ private_subnet1_out.subnet.id }}
-        Private Subnet 2 ID: {{ private_subnet2_out.subnet.id }}
-        Private Subnet 3 ID: {{ private_subnet3_out.subnet.id }}
-        Internet Gateway ID: {{ igw_out.gateway_id }}
-        NAT Gateway ID: {{ nat_out.nat_gateway_id }}
-        Private Route Table ID: {{ private_route_table_out.route_table.id }}
-        Public Route Table ID: {{ public_route_table_out.route_table.id }}
+        vpc_id: {{ vpcout.vpc.id }}
+        public_subnet1id: {{ public_subnet1_out.subnet.id }}
+        public_subnet2id: {{ public_subnet2_out.subnet.id }}
+        public_subnet3id: {{ public_subnet3_out.subnet.id }}
+        private_subnet1id: {{ private_subnet1_out.subnet.id }}
+        private_subnet2id: {{ private_subnet2_out.subnet.id }}
+        private_subnet3id: {{ private_subnet3_out.subnet.id }}
+        igwid: {{ igw_out.gateway_id }}
+        natgwid: {{ nat_out.nat_gateway_id }}
+        private_route_tableid: {{ private_route_table_out.route_table.id }}
+        public_route_tableid: {{ public_route_table_out.route_table.id }}
         cacheable: yes
 
     - name: Save VPC variables to file
       copy:
         content:
-          VPC ID: {{ vpcout.vpc.id }}
-          Public Subnet 1 ID: {{ public_subnet1_out.subnet.id }}
-          Public Subnet 2 ID: {{ public_subnet2_out.subnet.id }}
-          Public Subnet 3 ID: {{ public_subnet3_out.subnet.id }}
-          Private Subnet 1 ID: {{ private_subnet1_out.subnet.id }}
-          Private Subnet 2 ID: {{ private_subnet2_out.subnet.id }}
-          Private Subnet 3 ID: {{ private_subnet3_out.subnet.id }}
-          Internet Gateway ID: {{ igw_out.gateway_id }}
-          NAT Gateway ID: {{ nat_out.nat_gateway_id }}
-          Private Route Table ID: {{ private_route_table_out.route_table.id }}
-          Public Route Table ID: {{ public_route_table_out.route_table.id }}
+          vpc_id: {{ vpcout.vpc.id }}
+          public_subnet1id: {{ public_subnet1_out.subnet.id }}
+          public_subnet2id: {{ public_subnet2_out.subnet.id }}
+          public_subnet3id: {{ public_subnet3_out.subnet.id }}
+          private_subnet1id: {{ private_subnet1_out.subnet.id }}
+          private_subnet2id: {{ private_subnet2_out.subnet.id }}
+          private_subnet3id: {{ private_subnet3_out.subnet.id }}
+          igwid: {{ igw_out.gateway_id }}
+          natgwid: {{ nat_out.nat_gateway_id }}
+          private_route_tableid: {{ private_route_table_out.route_table.id }}
+          public_route_tableid: {{ public_route_table_out.route_table.id }}
         dest: vars/output_vars
         #dest: "vpc_details_{{ region }}.txt"
