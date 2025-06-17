@@ -125,7 +125,7 @@
         state: "{{ state }}"
         resource_tags:
           Name: Tecprofile_Public_Route_Table
-        Subnets:
+        subnets:
           - "{{ public_subnet1_out.subnet.id }}"
           - "{{ public_subnet2_out.subnet.id }}"
           - "{{ public_subnet3_out.subnet.id }}"
