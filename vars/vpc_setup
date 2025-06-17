@@ -1,4 +1,5 @@
 vpc_name: "Tecprofile-vpc"
+public_subnet_name: "Tecprofile-public-subnet"
 
 # VPC Range
 vpc_cidr: '172.20.0.0/16'
