@@ -1,0 +1,60 @@
+- name: Setup Bastion Host
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Import VPC Setup Variables
+      include_vars: vars/bastion_setup
+
+    - name: Import VPC Variables
+      include_vars: vars/output_vars
+
+    - name: Create Techprofile ec2 key
+      amazon.aws.ec2_key:
+        name: Techprofile_key
+        region: "{{ region }}"
+      register: key_out
+
+    - name: Save private key into file bastion-key.pem
+      copy:
+        content: "{{ key_out.key.private_key }}"
+        dest: "./bastion-key.pem"
+        mode: 0600
+      when: key_out.changed
+
+    - name: Create Tecprofile Bastion Host Security Group
+      amazon.aws.ec2_group:
+        name: bastion_sg
+        description: Allow traffic from port 22 to the Bastion Host
+        vpc_id: "{{ vpc_id }}"
+        region: "{{ region }}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{MYIP}}"
+      register: bastion_sg_out
+
+    - name: Launch Bastion Host Instance
+      amazon.aws.ec2_instance:
+        key_name: Techprofile_key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{ bastion_ami }}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: Techprofile_Bastion_Host
+          Project: Techprofile
+          Owner: DevOps Team
+        security_groups:
+          - "{{ bastion_sg_out.group_id }}"
+        exact_count: 1
+        count_tag:
+          Name: Techprofile_Bastion_Host
+          Project: Techprofile
+          Owner: DevOps Team
+      register: bastion_instance_out
+
+    - debug:
+        var: bastion_instance_out
