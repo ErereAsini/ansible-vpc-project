@@ -115,7 +115,6 @@
         wait: true
         region: "{{ region }}"
         if_exists_never_create: true
-        allocation_id: "{{ nat_eip_allocation_id }}"
         resource_tags:
           Name: Tecprofile_NAT_Gateway
       register: nat_out
