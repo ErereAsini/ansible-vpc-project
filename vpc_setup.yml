@@ -54,4 +54,40 @@
         resource_tags:
           Name: Tecprofile_public_subnet3
       register: public_subnet3_out
+
+    - name: Create Tecprofile Private Subnet 1 in Zone1
+      amazon.aws.ec2_vpc_subnet:
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ private_subnet1_cidr }}"
+        az: "{{ zone1 }}"
+        region: "{{ region }}"
+        map_public: no
+        state: "{{ state }}"
+        resource_tags:
+          Name: Tecprofile_private_subnet1
+      register: private_subnet1_out
+
+    - name: Create Tecprofile Private Subnet 2 in Zone2 
+      amazon.aws.ec2_vpc_subnet:
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ private_subnet2_cidr }}"
+        az: "{{ zone2 }}"
+        region: "{{ region }}"
+        map_public: no
+        state: "{{ state }}"
+        resource_tags:
+          Name: Tecprofile_private_subnet2
+      register: private_subnet2_out
+      
+    - name: Create Tecprofile Private Subnet 3 in Zone3
+      amazon.aws.ec2_vpc_subnet:
+        vpc_id: "{{ vpcout.vpc.id }}"
+        cidr: "{{ private_subnet3_cidr }}"
+        az: "{{ zone3 }}"
+        region: "{{ region }}"
+        map_public: no
+        state: "{{ state }}"
+        resource_tags:
+          Name: Tecprofile_private_subnet3
+      register: private_subnet3_out
     
