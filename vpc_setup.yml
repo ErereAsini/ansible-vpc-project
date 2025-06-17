@@ -29,6 +29,6 @@
         state: "{{state}}"
         resource_tags:
           Name: "{{ public_subnet1_name }}"
-      register: pubsubnet1_out
+      register: public_subnet1_out
 
     
