@@ -130,7 +130,7 @@
           - "{{ public_subnet2_out.subnet.id }}"
           - "{{ public_subnet3_out.subnet.id }}"
         routes:
-          - dest: 0.0.0/0
+          - dest: 0.0.0.0/0
             gateway_id: "{{ igw_out.gateway_id }}"
       register: public_route_table_out
       
