@@ -114,7 +114,7 @@
         subnet_id: "{{ public_subnet1_out.subnet.id }}"
         wait: true
         region: "{{ region }}"
-        if_exists_never_create: true
+        if_exist_do_not_create: true
         resource_tags:
           Name: Tecprofile_NAT_Gateway
       register: nat_out
