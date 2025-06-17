@@ -8,10 +8,10 @@
     - name: Create Tecprofile VPC
       ec2_vpc_net:
         name: "{{ vpc_name }}"
-        cidr_block: "{{ vpcCidr }}"
+        cidr_block: "{{ vpc_cidr }}"
         region: "{{ region }}"
         dns_support: yes
-        dns_hostname: yes
+        dns_hostnames: yes
         tenancy: default
         state: "{{state}}"
       register: vpcout
