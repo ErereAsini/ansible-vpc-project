@@ -59,3 +59,10 @@
 
     - debug:
         var: bastion_instance_out
+
+    - name: Insert/Update "bastion_sgid" in vars/output_vars
+      blockinfile:
+        path: vars/output_vars
+        backup: yes
+        block: |
+          bastion_sgid: {{bastion_sg_out.group_id}}
