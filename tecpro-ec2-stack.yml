@@ -163,7 +163,7 @@
       register: mysql_instance_out
 
     - debug:
-        var: mysql_instance_out.instances[0].id
+        var: mysql_instance_out.tagged_instances[0].id
 
     - local_action: 
         module: ec2_elb_lb
