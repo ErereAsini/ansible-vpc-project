@@ -23,7 +23,7 @@
       when: key_out.changed
 
     - name: Create Tecprofile Bastion Host Security Group
-      ec2_group:
+      amazon.aws.ec2_group:
         name: bastion_sg
         description: Allow traffic from port 22 to the Bastion Host
         region: "{{ region }}"
@@ -36,7 +36,7 @@
       register: bastion_sg_out
 
     - name: Launch Bastion Host Instance
-      amazon.aws.ec2_instance:
+      ec2:
         key_name: Tecprofile_key
         region: "{{ region }}"
         instance_type: t2.micro
