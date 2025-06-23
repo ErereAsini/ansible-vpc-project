@@ -80,7 +80,9 @@
           Project: Tecprofile
           Owner: DevOps Team
         exact_count: 1
-        group_id: "{{ tecproStackSG_out.group_id }}"
+        security_groups:
+          - "{{ tecproStackSG_out.group_id }}"
+        #group_id: "{{ tecproStackSG_out.group_id }}"
         vpc_subnet_id: "{{ private_subnet1id }}"
       register: nginx_instance_out
 
@@ -97,7 +99,9 @@
           Project: Tecprofile
           Owner: DevOps Team
         exact_count: 1
-        group_id: "{{ tecproStackSG_out.group_id }}"
+        security_groups:
+          - "{{ tecproStackSG_out.group_id }}"
+        #group_id: "{{ tecproStackSG_out.group_id }}"
         vpc_subnet_id: "{{ private_subnet2id }}"
       register: tomcat_instance_out
 
@@ -114,7 +118,9 @@
           Project: Tecprofile
           Owner: DevOps Team
         exact_count: 1
-        group_id: "{{ tecproStackSG_out.group_id }}"
+        security_groups:
+          - "{{ tecproStackSG_out.group_id }}"
+        #group_id: "{{ tecproStackSG_out.group_id }}"
         vpc_subnet_id: "{{ private_subnet3id }}"
       register: memcache_instance_out
 
@@ -131,7 +137,9 @@
           Project: Tecprofile
           Owner: DevOps Team
         exact_count: 1
-        group_id: "{{ tecproStackSG_out.group_id }}"
+        security_groups:
+          - "{{ tecproStackSG_out.group_id }}"
+        #group_id: "{{ tecproStackSG_out.group_id }}"
         vpc_subnet_id: "{{ private_subnet3id }}"
       register: rabbitmq_instance_out
 
@@ -148,7 +156,9 @@
           Project: Tecprofile
           Owner: DevOps Team
         exact_count: 1
-        group_id: "{{ tecproStackSG_out.group_id }}"
+        security_groups:
+          - "{{ tecproStackSG_out.group_id }}"
+        # group_id: "{{ tecproStackSG_out.group_id }}"
         vpc_subnet_id: "{{ private_subnet3id }}"
       register: mysql_instance_out
 
