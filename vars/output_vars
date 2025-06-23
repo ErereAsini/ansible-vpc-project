@@ -1,0 +1,13 @@
+region: us-east-2
+vpc_id: vpc-02445dff696f8c720
+public_subnet1id: subnet-0aa573b1ce99a201a
+public_subnet2id: subnet-0fa907c48419ec7df
+public_subnet3id: subnet-011f6b909a78d94b7
+private_subnet1id: subnet-0d10033b0bc2bcdef
+private_subnet2id: subnet-0038db1432b04ad5c
+private_subnet3id: subnet-0c1669e73d9f5fc4d
+igwid: igw-06fe565c7692c6ef6
+natgwid: nat-015a6091019f809db
+private_route_tableid: rtb-081839bfdab7f8195
+public_route_tableid: rtb-078aa54cf7b22b8fc
+bastion_sgid: 
