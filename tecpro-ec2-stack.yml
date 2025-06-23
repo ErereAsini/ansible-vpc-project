@@ -66,3 +66,92 @@
           - proto: all
             group_id: "{{tecproStackSG_out.group_id}}"
       register: tecproStackSG_out
+
+    - name: Launch Tecpro Stack EC2 Instance for nginx web server
+      amazon.aws.ec2_instance:
+        key_name: tecpro_key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image_id: "{{nginx_ami}}"
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Name: nginx_instance
+          Project: Tecprofile
+          Owner: DevOps Team
+        exact_count: 1
+        group_id: "{{ tecproStackSG_out.group_id }}"
+        vpc_subnet_id: "{{ private_subnet1id }}"
+      register: nginx_instance_out
+
+    - name: Launch Tecpro Stack EC2 Instances for Apache Tomcat
+      amazon.aws.ec2_instance:
+        key_name: tecpro_key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image_id: "{{tomcat_ami}}"
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Name: tomcat_instance
+          Project: Tecprofile
+          Owner: DevOps Team
+        exact_count: 1
+        group_id: "{{ tecproStackSG_out.group_id }}"
+        vpc_subnet_id: "{{ private_subnet2id }}"
+      register: tomcat_instance_out
+
+    - name: Launch Tecpro Stack EC2 Instance for Memcache
+      amazon.aws.ec2_instance:
+        key_name: tecpro_key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image_id: "{{memcache_ami}}"
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Name: memcache_instance
+          Project: Tecprofile
+          Owner: DevOps Team
+        exact_count: 1
+        group_id: "{{ tecproStackSG_out.group_id }}"
+        vpc_subnet_id: "{{ private_subnet3id }}"
+      register: memcache_instance_out
+
+    - name: Launch Tecpro Stack EC2 Instance for Rabbit MQ
+      amazon.aws.ec2_instance:
+        key_name: tecpro_key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image_id: "{{rmq_ami}}"
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Name: rabbitmq_instance
+          Project: Tecprofile
+          Owner: DevOps Team
+        exact_count: 1
+        group_id: "{{ tecproStackSG_out.group_id }}"
+        vpc_subnet_id: "{{ private_subnet3id }}"
+      register: rabbitmq_instance_out
+
+    - name: Launch Tecpro Stack for MySQL
+      amazon.aws.ec2_instance:
+        key_name: tecpro_key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image_id: "{{mysql_ami}}"
+        wait: yes
+        wait_timeout: 300
+        tags:
+          Name: mysql_instance
+          Project: Tecprofile
+          Owner: DevOps Team
+        exact_count: 1
+        group_id: "{{ tecproStackSG_out.group_id }}"
+        vpc_subnet_id: "{{ private_subnet3id }}"
+      register: mysql_instance_out
+
+    - debug:
+        var: mysql_instance_out  
+    
