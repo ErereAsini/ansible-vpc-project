@@ -36,22 +36,22 @@
       register: bastion_sg_out
 
     - name: Launch Bastion Host Instance
-      ec2:
+      amazon.aws.ec2_instance:
         key_name: Tecprofile_key
         region: "{{ region }}"
         instance_type: t2.micro
         image_id: "{{ bastion_ami }}"
         wait: yes
         wait_timeout: 300
-        instance_tags:
+        tags:
           Name: Tecprofile_Bastion_Host
           Project: Tecprofile
           Owner: DevOps Team
         exact_count: 1
-        count_tag:
-          Name: Tecprofile_Bastion_Host
-          Project: Tecprofile
-          Owner: DevOps Team
+        # count_tag:
+        #   Name: Tecprofile_Bastion_Host
+        #   Project: Tecprofile
+        #   Owner: DevOps Team
         security_groups:
           - "{{ bastion_sg_out.group_id }}"
         vpc_subnet_id: "{{ public_subnet1id }}"
