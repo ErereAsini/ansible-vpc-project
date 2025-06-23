@@ -26,8 +26,8 @@
       amazon.aws.ec2_group:
         name: bastion_sg
         description: Allow traffic from port 22 to the Bastion Host
-        vpc_id: "{{ vpc_id }}"
         region: "{{ region }}"
+        vpc_id: "{{ vpc_id }}"
         rules:
           - proto: tcp
             from_port: 22
