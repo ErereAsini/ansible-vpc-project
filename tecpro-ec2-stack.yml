@@ -53,4 +53,4 @@
             from_port: 22
             to_port: 22
             group_id: "{{bastion_sgid}}"
-      register: tecproStack-sg_out
+      register: tecproStackSG_out
