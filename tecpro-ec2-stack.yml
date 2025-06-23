@@ -102,7 +102,7 @@
         security_groups:
           - "{{ tecproStackSG_out.group_id }}"
         #group_id: "{{ tecproStackSG_out.group_id }}"
-        vpc_subnet_id: "{{ private_subnet2id }}"
+        vpc_subnet_id: "{{ private_subnet1id }}"
       register: tomcat_instance_out
 
     - name: Launch Tecpro Stack EC2 Instance for Memcache
@@ -121,7 +121,7 @@
         security_groups:
           - "{{ tecproStackSG_out.group_id }}"
         #group_id: "{{ tecproStackSG_out.group_id }}"
-        vpc_subnet_id: "{{ private_subnet3id }}"
+        vpc_subnet_id: "{{ private_subnet1id }}"
       register: memcache_instance_out
 
     - name: Launch Tecpro Stack EC2 Instance for Rabbit MQ
@@ -140,7 +140,7 @@
         security_groups:
           - "{{ tecproStackSG_out.group_id }}"
         #group_id: "{{ tecproStackSG_out.group_id }}"
-        vpc_subnet_id: "{{ private_subnet3id }}"
+        vpc_subnet_id: "{{ private_subnet1id }}"
       register: rabbitmq_instance_out
 
     - name: Launch Tecpro Stack for MySQL
@@ -159,7 +159,7 @@
         security_groups:
           - "{{ tecproStackSG_out.group_id }}"
         # group_id: "{{ tecproStackSG_out.group_id }}"
-        vpc_subnet_id: "{{ private_subnet3id }}"
+        vpc_subnet_id: "{{ private_subnet1id }}"
       register: mysql_instance_out
 
     - debug:
