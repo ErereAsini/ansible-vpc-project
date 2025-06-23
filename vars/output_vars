@@ -10,4 +10,6 @@ igwid: igw-06fe565c7692c6ef6
 natgwid: nat-015a6091019f809db
 private_route_tableid: rtb-081839bfdab7f8195
 public_route_tableid: rtb-078aa54cf7b22b8fc
-bastion_sgid: 
+# BEGIN ANSIBLE MANAGED BLOCK
+bastion_sgid: sg-0586ee78366a2d570
+# END ANSIBLE MANAGED BLOCK 
