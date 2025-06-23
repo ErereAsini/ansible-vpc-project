@@ -24,7 +24,7 @@
       when: key_out.changed
 
     - name: Create Securiry Group for Tecpro Load Balancer
-      ec2_group:
+      amazon.aws.ec2_group:
         name: tecproELB-sg
         description: Allow port 80 from everywhere and all port within sg
         region: "{{region}}"
@@ -37,7 +37,7 @@
       register: tecproELBSG_out
 
     - name: Create Securiry Group for Tecpro Stack
-      ec2_group:
+      amazon.aws.ec2_group:
         name: tecproStack-sg
         description: Allow port 22 from everywhere and all port within sg
         region: "{{region}}"
