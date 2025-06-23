@@ -163,7 +163,7 @@
       register: mysql_instance_out
 
     - debug:
-        var: mysql_instance_out.tagged_instances[0].id
+        var: mysql_instance_out.instances[0].id
 
     - local_action: 
         module: ec2_elb_lb
@@ -171,7 +171,7 @@
         region: "{{ region }}"
         state: present
         instance_ids:
-          - "{{ nginx_instance_out.tagged_instances[0].id }}"
+          - "{{ nginx_instance_out.instances[0].id }}"
         purge_instance_ids: true
         security_group_ids: "{{ tecproELBSG_out.group_id }}"
         subnets:
@@ -187,11 +187,11 @@
       blockinfile:
         path: launch-stack/group_vars/hostsip
         block: |
-          nginx_ip: "{{ nginx_instance_out.tagged_instances[0].private_ip }}"
-          tomcat_ip: "{{ tomcat_instance_out.tagged_instances[0].private_ip }}"
-          memcache_ip: "{{ memcache_instance_out.tagged_instances[0].private_ip }}"
-          rabbitmq_ip: "{{ rabbitmq_instance_out.tagged_instances[0].private_ip }}"
-          mysql_ip: "{{ mysql_instance_out.tagged_instances[0].private_ip }}"
+          nginx_ip: "{{ nginx_instance_out.instances[0].private_ip }}"
+          tomcat_ip: "{{ tomcat_instance_out.instances[0].private_ip }}"
+          memcache_ip: "{{ memcache_instance_out.instances[0].private_ip }}"
+          rabbitmq_ip: "{{ rabbitmq_instance_out.instances[0].private_ip }}"
+          mysql_ip: "{{ mysql_instance_out.instances[0].private_ip }}"
 
     - name: Copy login key to group_vars
       copy:
@@ -203,11 +203,11 @@
       blockinfile:
         path: launch-stack/inventry-tecpro
         block: |
-          nginx ansible_host={{ nginx_instance_out.tagged_instances[0].private_ip }}
-          tomcat ansible_host={{ tomcat_instance_out.tagged_instances[0].private_ip }} 
-          memcache ansible_host={{ memcache_instance_out.tagged_instances[0].private_ip }} 
-          rabbitmq ansible_host={{ rabbitmq_instance_out.tagged_instances[0].private_ip }}
-          mysql ansible_host={{ mysql_instance_out.tagged_instances[0].private_ip }}
+          nginx ansible_host={{ nginx_instance_out.instances[0].private_ip }}
+          tomcat ansible_host={{ tomcat_instance_out.instances[0].private_ip }} 
+          memcache ansible_host={{ memcache_instance_out.instances[0].private_ip }} 
+          rabbitmq ansible_host={{ rabbitmq_instance_out.instances[0].private_ip }}
+          mysql ansible_host={{ mysql_instance_out.instances[0].private_ip }}
           cntl ansible_host=127.0.0.1 ansible_connection=local
 
           [websrvgrp]
